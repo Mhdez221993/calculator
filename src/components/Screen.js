@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import { CalContext } from '../Context/CalProvider';
+import { Textfit } from 'react-textfit';
 
 const Screen = () => {
+  const {calc} = useContext(CalContext)
+
   return (
-    <div className="screen">
-      <h2>123445</h2>
-    </div>
+    <Textfit className="screen">
+      <h2>{calc.num}</h2>
+    </Textfit>
   );
 };
 
