@@ -3,15 +3,15 @@ import React, { createContext, useState } from 'react';
 export const CalContext = createContext()
 
 const CalProvider = ({ children}) => {
-  const [cal, setCal] = useState({
+  const [calc, setCalc] = useState({
     sing: '',
     num: 0,
     res: 0
   })
 
   const providerValue = {
-    cal,
-    setCal
+    calc,
+    setCalc
   }
 
   return (
