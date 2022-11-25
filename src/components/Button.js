@@ -34,10 +34,63 @@ const Button = ({value}) => {
 
   }
 
+  const signClic = () => {
+    setCalc({
+      sign: value,
+      res: !calc.res && calc.num ? calc.num : calc.sign,
+      num: 0
+    })
+  }
+
+
+  const equalClick = () => {
+    if (calc.num && calc.sign) {
+      const math = (a, b, sign) => {
+        const operation = {
+          '/': (a, b) => a / b,
+          'x': (a, b) => a * b,
+          '-': (a, b) => a - b,
+          '+': (a, b) => a + b,
+        }
+
+        return operation[sign](a, b)
+      }
+
+      setCalc({
+        num: math(calc.res, calc.num, calc.sign),
+        res: 0,
+        sign: ''
+      })
+    }
+  }
+
+  const percentClick = () => {
+    setCalc({
+      num: (calc.num / 100),
+      res: (calc.num / 100),
+      sign: ''
+    })
+  }
+
+  const invertClick = () => {
+    setCalc({
+      num: calc.num ? calc.num * -1 : 0,
+      res: calc.res ? calc.res * -1 : 0,
+      sign: '',
+    })
+  }
+
   const handleClick = () => {
     const result = {
       '.': commaClick,
       'C': resetCal,
+      '/': signClic,
+      'x': signClic,
+      '-': signClic,
+      '+': signClic,
+      '=': equalClick,
+      '%': percentClick,
+      '+-': invertClick,
     }
 
     if (result[value]) {
