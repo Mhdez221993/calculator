@@ -12,17 +12,39 @@ const Button = ({value}) => {
     })
   }
 
-  const reset = () => {
+  const resetCal = () => {
     setCalc({sing: '', num: 0, res: 0})
+  }
+
+  const handleNumbers = () => {
+    const numString = value.toString()
+
+    let numValue
+    if(numString === '0' && calc.num === '0') {
+      numValue = 0
+
+    } else {
+      numValue = Number(calc.num + numString)
+    }
+
+    setCalc({
+      ...calc,
+      num: numValue,
+    })
+
   }
 
   const handleClick = () => {
     const result = {
       '.': commaClick,
-      'C': reset,
+      'C': resetCal,
     }
 
-    return result[value]()
+    if (result[value]) {
+      return result[value]()
+    }
+
+    return handleNumbers()
   }
 
   return (
