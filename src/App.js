@@ -1,5 +1,6 @@
 import Button from "./components/Button";
 import ButtonBox from "./components/ButtonBox";
+import CalProvider from "./Context/CalProvider";
 import Screen from "./components/Screen";
 import Wrapper from "./components/Wrapper";
 
@@ -13,7 +14,7 @@ const buttons = [
 
 function App() {
   return (
-    <div>
+    <CalProvider>
       <Wrapper>
         <Screen />
         <ButtonBox>
@@ -27,7 +28,7 @@ function App() {
           }
         </ButtonBox>
       </Wrapper>
-    </div>
+    </CalProvider>
   );
 }
 
