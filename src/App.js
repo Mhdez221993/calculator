@@ -22,7 +22,7 @@ function App() {
             buttons.flat().map((btn, i) => (
               <Button
                 key={i}
-                button={btn}
+                value={btn}
               />
             ))
           }
